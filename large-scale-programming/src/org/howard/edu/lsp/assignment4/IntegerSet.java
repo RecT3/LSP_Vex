@@ -1,92 +1,116 @@
 package org.howard.edu.lsp.assignment4;
 
-import java.util.*;
+import java.util.*; //for ArrayList<>()
 
 public class IntegerSet {
 
 	private List<Integer> int_set;
 	
+	//constructor, initializes int_set
 	public IntegerSet() {
 		int_set = new ArrayList<Integer>();
 	}
 	
+	//creating our own error that just prints out the string that is passed to it
 	public class IntegerSetException extends Exception {
 		public IntegerSetException(String error) {
 			super(error);
 		}
 	}
 	
+	//getter method -> (O(1))
 	public List<Integer> get_set() {
 		return int_set;
 	}
 	
+	//setter method - (O(1))
 	public void set_set(List<Integer> new_set) {
 		int_set = new_set;
 	}
 	
+	//clears the integer set -> (O(N))
 	public void clear() {
 		int_set.clear();
 	}
 	
+	//returns the size of the array list -> (O(1))
 	public int length() {
 		return int_set.size();
 	}
 	
+	//checks if IntegerSet a is the exact same -> (O(N))
 	public boolean equals(IntegerSet a) {
+		//if they have different lengths they cannot be equal
 		if (int_set.size() != a.length()) {
 			return false;
 		}
+		//if they have equal lengths check if all elements are the same
 		else {
 			return int_set.containsAll(a.int_set);
 		}
 	}
 	
+	//check if the IntegerSet contains a value -> (O(N))
 	public boolean contains(int value) {
 		return int_set.contains(value);
 	}
 	
+	//returns the largest number in the set -> (O(N))
 	public int largest() throws IntegerSetException {
+		//if the set is empty, throws an exception saying so
 		if (int_set.isEmpty()) {
 			throw new IntegerSetException("The Set is Empty.");
 		}
+		//search through the set and find the largest integer
 		else {
-			int max = int_set.get(0);
+			//set our comparison to something in the set already
+			int large = int_set.get(0);
+			//iterate through the set and compare the values to large
 			for (int i = 0; i < int_set.size(); i++) {
-				if (int_set.get(i) > max) {
-					max = int_set.get(i);
+				//set large to the bigger integer if found
+				if (int_set.get(i) > large) {
+					large = int_set.get(i);
 				}
 			}
-			return max;
+			return large;
 		}
 	}
 	
+	//returns the smallest integer in the set -> (O(N))
 	public int smallest() throws IntegerSetException {
+		//if the set is empty, throws an exception saying so
 		if (int_set.isEmpty()) {
 			throw new IntegerSetException("The Set is Empty.");
 		}
+		//search through the set and find the smallest integer
 		else {
-			int min = int_set.get(0);
+			//set our comparison to something in the set already
+			int small = int_set.get(0);
+			//iterate through the set and compare the values to small
 			for (int i = 0; i < int_set.size(); i++) {
-				if (int_set.get(i) < min) {
-					min = int_set.get(i);
+				//set small to the smaller integer if found
+				if (int_set.get(i) < small) {
+					small = int_set.get(i);
 				}
 			}
-			return min;
+			return small;
 		}
 	}
-	
+	//adds an integer to the set if it is not present -> (O(N))
 	public void add(int item) {
 		if (int_set.contains(item) == false) {
 			int_set.add(item);
 		}
 	}
 	
+	//removes an integer from the set if it is present -> (O(N))
 	public void remove(int item) {
 		if (int_set.contains(item) == true) {
 			int_set.remove(int_set.indexOf(item));
 		}
 	}
 	
+	//calculates the union of two sets -> (O(N))
 	public void union(IntegerSet b) {
 		for (int i = 0; i < b.length(); i++) {
 			if (int_set.contains(b.int_set.get(i)) == false) {
@@ -95,10 +119,12 @@ public class IntegerSet {
 		}
 	}
 	
+	//calculates the intersection of two sets -> (O(N))
 	public void intersect(IntegerSet b) {
 		int_set.retainAll(b.int_set);
 	}
 	
+	//calculates the difference of two sets -> (O(N))
 	public void diff(IntegerSet b) {
 		for (int i = 0; i < b.length(); i++) {
 			if (int_set.contains(b.int_set.get(i)) == true) {
@@ -107,119 +133,17 @@ public class IntegerSet {
 		}
 	}
 	
+	//checks if the set is empty -> (O(1))
 	public boolean isEmpty() {
 		return int_set.isEmpty();
 	}
 	
+	//prints every integer in the set -> (O(N))
 	public String toString() {
 		String list = "";
 		for (int i = 0; i < int_set.size(); i++) {
 			list += int_set.get(i).toString() + ", ";
 		}
 		return list;
-	}
-	
-	public static void main(String[] args) {
-		try {
-			IntegerSet set1 = new IntegerSet();
-			for (int i = 1; i <= 10; i++) {
-				set1.add(i);
-			}
-	
-			System.out.println("Value of Set 1 is: " + set1.toString() + "\n");
-			System.out.println("Smallest value in Set 1 is: " + set1.smallest());
-			System.out.println("Largest value in Set 1 is: " + set1.largest() + "\n");
-			
-			System.out.println("Removed 3 from Set 1.");
-			set1.remove(3);
-			System.out.println("New value of Set 1: " + set1.toString() + "\n");
-			
-			System.out.println("Removed 8 from Set 1.");
-			set1.remove(8);
-			System.out.println("New value of Set 1: " + set1.toString() + "\n");
-			
-			System.out.println("Remove 100 from Set 1.");
-			set1.remove(100);
-			System.out.println("New value of Set 1: " + set1.toString() + "\n");
-			
-			System.out.println("Set 1 is Empty (true/false)");
-			System.out.println(set1.isEmpty() + "\n");
-			
-			System.out.println("Set 1 contains 9? (true/false)");
-			System.out.println(set1.contains(9) + "\n");
-			
-			System.out.println("Length of Set 1: " + set1.length() + "\n");
-			
-			set1.clear();
-			for (int i = 1; i <= 10; i++) {
-				set1.add(i);
-			}
-			IntegerSet set2 = new IntegerSet();
-			for (int i = 0; i <= 20; i += 2) {
-				set2.add(i);
-			}
-			System.out.println("Value of Set 1 is: " + set1.toString());
-			System.out.println("Value of Set 2 is: " + set2.toString());
-			System.out.println("We will reset the values of each list after every test." + "\n");
-			
-			System.out.println("Union of Set 1 and Set 2");
-			set1.union(set2);	// union of set1 and set2
-			System.out.println("Result of union of Set 1 and Set 2");
-			System.out.println(set1.toString() + "\n");	// result of union of set1 and set2
-			set1.clear();
-			for (int i = 1; i <= 10; i++) {
-				set1.add(i);
-			}
-			set2.clear();
-			for (int i = 0; i <= 20; i += 2) {
-				set2.add(i);
-			}
-			
-			System.out.println("Difference of Set 1 and Set 2");
-			set1.diff(set2);
-			System.out.println(set1.toString() + "\n");
-			set1.clear();
-			for (int i = 1; i <= 10; i++) {
-				set1.add(i);
-			}
-			set2.clear();
-			for (int i = 0; i <= 20; i += 2) {
-				set2.add(i);
-			}
-			
-			System.out.println("Difference of Set 2 and Set 1");
-			set2.diff(set1);
-			System.out.println(set2.toString() + "\n");
-			set1.clear();
-			for (int i = 1; i <= 10; i++) {
-				set1.add(i);
-			}
-			set2.clear();
-			for (int i = 0; i <= 20; i += 2) {
-				set2.add(i);
-			}
-			
-			System.out.println("Intersection of Set 1 and Set 2");
-			set1.intersect(set2);
-			System.out.println(set1.toString() + "\n");
-			set1.clear();
-			for (int i = 1; i <= 10; i++) {
-				set1.add(i);
-			}
-			set2.clear();
-			for (int i = 0; i <= 20; i += 2) {
-				set2.add(i);
-			}
-			System.out.println("Are Set 1 and Set 2 equal?");
-			System.out.println(set1.equals(set2) + "\n");
-			
-			System.out.println("Catching the exception");
-			set1.clear();
-			set1.largest();
-		}
-		catch (IntegerSetException e) {
-			System.out.println(e);
-		}
-
 	}
 }
