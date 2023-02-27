@@ -2,6 +2,13 @@ package org.howard.edu.lsp.assignment4;
 
 import java.util.*; //for ArrayList<>()
 
+/**
+ * making our own data structure
+ * complete with functions and an error
+ * 
+ * @author Ryan
+ *
+ */
 public class IntegerSet {
 
 	private List<Integer> int_set;
