@@ -2,6 +2,7 @@ package org.howard.edu.lsp.assignment4;
 
 import java.util.*; //for ArrayList<>()
 
+
 public class IntegerSet {
 
 	private List<Integer> int_set;
