@@ -2,25 +2,31 @@ package org.howard.edu.lsp.assignment4;
 
 import java.util.*; //for ArrayList<>()
 
-
 public class IntegerSet {
 
 	private List<Integer> int_set;
 	
 	/**
-	 * constructor, initializes int_set
+	 * class constructor
+	 * initializes int_set
 	 */
 	public IntegerSet() {
 		int_set = new ArrayList<Integer>();
 	}
 	
-	//creating our own error that just prints out the string that is passed to it
 	/**
 	 * 
 	 * @author Ryan
 	 *
+	 *creating our own error that just prints out the string that is passed to it
 	 */
 	public class IntegerSetException extends Exception {
+		/**
+		 * 
+		 * @param error String instance to print when called
+		 * 
+		 * prints out error
+		 */
 		public IntegerSetException(String error) {
 			super(error);
 		}

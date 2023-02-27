@@ -2,7 +2,16 @@ package org.howard.edu.lsp.assignment4;
 
 import org.howard.edu.lsp.assignment4.IntegerSet.IntegerSetException;
 
+/**
+ * 
+ * @author Ryan
+ *
+ */
 public class Driver {
+	/**
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		//in a try method to catch the exception
 		try { 
