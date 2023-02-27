@@ -7,39 +7,71 @@ public class IntegerSet {
 
 	private List<Integer> int_set;
 	
-	//constructor, initializes int_set
+	/**
+	 * constructor, initializes int_set
+	 */
 	public IntegerSet() {
 		int_set = new ArrayList<Integer>();
 	}
 	
 	//creating our own error that just prints out the string that is passed to it
+	/**
+	 * 
+	 * @author Ryan
+	 *
+	 */
 	public class IntegerSetException extends Exception {
 		public IntegerSetException(String error) {
 			super(error);
 		}
 	}
 	
-	//getter method -> (O(1))
+	//(O(1))
+	/**
+	 * getter method
+	 * 
+	 * @return ArrayList containing all integers in the set
+	 */
 	public List<Integer> get_set() {
 		return int_set;
 	}
 	
-	//setter method - (O(1))
+	//(O(1))
+	/**
+	 * setter method
+	 * 
+	 * @param new_set List instance to declare to
+	 */
 	public void set_set(List<Integer> new_set) {
 		int_set = new_set;
 	}
 	
-	//clears the integer set -> (O(N))
+	//(O(N))
+	/**
+	 * clears the integer set using the ArrayList function clear()
+	 */
 	public void clear() {
 		int_set.clear();
 	}
 	
-	//returns the size of the array list -> (O(1))
+	//(O(1))
+	/**
+	 * returns the size of the array list
+	 * 
+	 * @return integer which represents the size of the list
+	 */
 	public int length() {
 		return int_set.size();
 	}
 	
-	//checks if IntegerSet a is the exact same -> (O(N))
+	//(O(N))
+	/**
+	 * checks if IntegerSet a is the exact same 
+	 * 
+	 * @param a IntegerSet instance to compare
+	 * 
+	 * @return false if unequal, otherwise true
+	 */
 	public boolean equals(IntegerSet a) {
 		//if they have different lengths they cannot be equal
 		if (int_set.size() != a.length()) {
@@ -51,12 +83,26 @@ public class IntegerSet {
 		}
 	}
 	
-	//check if the IntegerSet contains a value -> (O(N))
+	//(O(N))
+	/**
+	 * check if the IntegerSet contains a value
+	 * 
+	 * @param value integer instance to check
+	 * 
+	 * @return false if absent, otherwise true
+	 */
 	public boolean contains(int value) {
 		return int_set.contains(value);
 	}
 	
-	//returns the largest number in the set -> (O(N))
+	//(O(N))
+	/**
+	 * returns the largest number in the set
+	 * 
+	 * @return integer the represents the largest value in the set
+	 * 
+	 * @throws IntegerSetException custom exception instance
+	 */
 	public int largest() throws IntegerSetException {
 		//if the set is empty, throws an exception saying so
 		if (int_set.isEmpty()) {
@@ -77,7 +123,14 @@ public class IntegerSet {
 		}
 	}
 	
-	//returns the smallest integer in the set -> (O(N))
+	//(O(N))
+	/**
+	 * returns the smallest integer in the set
+	 * 
+	 * @return integer that represents the smallest value in the set
+	 * 
+	 * @throws IntegerSetException custom exception instance
+	 */
 	public int smallest() throws IntegerSetException {
 		//if the set is empty, throws an exception saying so
 		if (int_set.isEmpty()) {
@@ -97,21 +150,36 @@ public class IntegerSet {
 			return small;
 		}
 	}
-	//adds an integer to the set if it is not present -> (O(N))
+	//(O(N))
+	/**
+	 * adds an integer to the set if it is not present
+	 * 
+	 * @param item integer instance to check
+	 */
 	public void add(int item) {
 		if (int_set.contains(item) == false) {
 			int_set.add(item);
 		}
 	}
 	
-	//removes an integer from the set if it is present -> (O(N))
+	//(O(N))
+	/**
+	 * removes an integer from the set if it is present
+	 * 
+	 * @param item integer instance to check
+	 */
 	public void remove(int item) {
 		if (int_set.contains(item) == true) {
 			int_set.remove(int_set.indexOf(item));
 		}
 	}
 	
-	//calculates the union of two sets -> (O(N))
+	//(O(N))
+	/**
+	 * calculates the union of two sets
+	 * 
+	 * @param b IntegerSet instance to compare
+	 */
 	public void union(IntegerSet b) {
 		for (int i = 0; i < b.length(); i++) {
 			if (int_set.contains(b.int_set.get(i)) == false) {
@@ -120,12 +188,22 @@ public class IntegerSet {
 		}
 	}
 	
-	//calculates the intersection of two sets -> (O(N))
+	//(O(N))
+	/**
+	 * calculates the intersection of two sets
+	 * 
+	 * @param b IntegerSet instance to compare
+	 */
 	public void intersect(IntegerSet b) {
 		int_set.retainAll(b.int_set);
 	}
 	
-	//calculates the difference of two sets -> (O(N))
+	//(O(N))
+	/**
+	 * calculates the difference of two sets
+	 * 
+	 * @param b IntegerSet instance to compare
+	 */
 	public void diff(IntegerSet b) {
 		for (int i = 0; i < b.length(); i++) {
 			if (int_set.contains(b.int_set.get(i)) == true) {
@@ -134,12 +212,22 @@ public class IntegerSet {
 		}
 	}
 	
-	//checks if the set is empty -> (O(1))
+	//(O(1))
+	/**
+	 * checks if the set is empty
+	 * 
+	 * @return true if empty, otherwise false
+	 */
 	public boolean isEmpty() {
 		return int_set.isEmpty();
 	}
 	
-	//prints every integer in the set -> (O(N))
+	//(O(N))
+	/**
+	 * prints every integer in the set
+	 * 
+	 * @return String formatted to hold every integer in the set
+	 */
 	public String toString() {
 		String list = "";
 		for (int i = 0; i < int_set.size(); i++) {
