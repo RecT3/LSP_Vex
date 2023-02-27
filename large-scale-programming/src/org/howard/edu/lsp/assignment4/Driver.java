@@ -3,14 +3,17 @@ package org.howard.edu.lsp.assignment4;
 import org.howard.edu.lsp.assignment4.IntegerSet.IntegerSetException;
 
 /**
+ * driver class to run all our tests
  * 
  * @author Ryan
  *
  */
 public class Driver {
 	/**
+	 * our main method
+	 * tests the functions created in IntegerSet
 	 * 
-	 * @param args
+	 * @param args The command line arguments
 	 */
 	public static void main(String[] args) {
 		//in a try method to catch the exception

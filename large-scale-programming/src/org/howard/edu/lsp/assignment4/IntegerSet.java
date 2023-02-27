@@ -15,17 +15,17 @@ public class IntegerSet {
 	}
 	
 	/**
+	 * creating our own error that just prints out the string that is passed to it
 	 * 
 	 * @author Ryan
 	 *
-	 *creating our own error that just prints out the string that is passed to it
 	 */
 	public class IntegerSetException extends Exception {
 		/**
+		 * prints out error
 		 * 
 		 * @param error String instance to print when called
 		 * 
-		 * prints out error
 		 */
 		public IntegerSetException(String error) {
 			super(error);
