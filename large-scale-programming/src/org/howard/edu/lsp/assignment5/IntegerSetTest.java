@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 import java.util.*;
 
 class IntegerSetTest {
@@ -23,6 +24,7 @@ class IntegerSetTest {
 	}
 		
 	@Test
+	@DisplayName("Test case for clear")
 	void testClear() {
 		my_set.add(1);
 		my_set.clear();
@@ -30,6 +32,7 @@ class IntegerSetTest {
 	}
 	
 	@Test
+	@DisplayName("Test case for length")
 	void testLength() {
 		my_set.add(5);
 		my_set.add(10);
@@ -39,6 +42,7 @@ class IntegerSetTest {
 	}
 	
 	@Test
+	@DisplayName("Test case for equals")
 	void testEquals() {
 		IntegerSet that_set = new IntegerSet();
 		that_set.add(1);
@@ -47,12 +51,14 @@ class IntegerSetTest {
 	}
 	
 	@Test
+	@DisplayName("Test case for contains")
 	void testContains() {
 		my_set.add(35);
 		assertTrue(my_set.contains(35));
 	}
 	
 	@Test
+	@DisplayName("Test case for largest")
 	void testLargest() throws IntegerSetException {
 		my_set.add(10);
 		my_set.add(20);
@@ -63,11 +69,13 @@ class IntegerSetTest {
 	}
 	
 	@Test
+	@DisplayName("Test case for largest exception")
 	void testLargestException() {
 		assertThrows(IntegerSetException.class, () -> my_set.largest());
 	}
 	
 	@Test
+	@DisplayName("Test case for smallest")
 	void testSmallest() throws IntegerSetException {
 		my_set.add(20);
 		my_set.add(40);
@@ -77,11 +85,13 @@ class IntegerSetTest {
 	}
 	
 	@Test
+	@DisplayName("Test case for smallest exception")
 	void testSmallestException() {
 		assertThrows(IntegerSetException.class, () -> my_set.smallest());
 	}
 	
 	@Test
+	@DisplayName("Test case for add")
 	void testAdd() {
 		IntegerSet that_set = new IntegerSet();
 		that_set.add(2);
@@ -96,6 +106,7 @@ class IntegerSetTest {
 	}
 	
 	@Test
+	@DisplayName("Test case for remove")
 	void testRemove() {
 		my_set.add(50);
 		my_set.add(100);
@@ -106,6 +117,7 @@ class IntegerSetTest {
 	}
 	
 	@Test
+	@DisplayName("Test case for union")
 	void testUnion() {
 		IntegerSet that_set = new IntegerSet();
 		my_set.add(1);
@@ -121,6 +133,7 @@ class IntegerSetTest {
 	}
 	
 	@Test
+	@DisplayName("Test case for intersect")
 	void testIntersect() {
 		IntegerSet that_set = new IntegerSet();
 		my_set.add(5);
@@ -138,6 +151,7 @@ class IntegerSetTest {
 	}
 	
 	@Test
+	@DisplayName("Test case for difference")
 	void testDifference() {
 		IntegerSet that_set = new IntegerSet();
 		my_set.add(20);
@@ -153,11 +167,13 @@ class IntegerSetTest {
 	}
 	
 	@Test
+	@DisplayName("Test case for isEmpty")
 	void testEmpty() {
 		assertTrue(my_set.isEmpty());
 	}
 	
 	@Test
+	@DisplayName("Test case for toString")
 	void testString() {
 		my_set.add(1);
 		my_set.add(2);
