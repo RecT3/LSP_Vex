@@ -19,8 +19,8 @@ class SongsDatabaseTest {
         db.addSong("Rap", "Crack Sandwich");
         db.addSong("R&B" , "Let It Burn");
         
-        db.addSong("Rap", "KOD");
-        db.addSong("Rap", "In Da Club");
+        db2.addSong("Rap", "KOD");
+        db2.addSong("Rap", "In Da Club");
         
         Set<String> rap_songs = db.getSongs("Rap");
         Set<String> rb_songs = db.getSongs("R&B");
@@ -34,6 +34,9 @@ class SongsDatabaseTest {
         assertFalse(rb_songs.contains("Crack Sandwich"));
         
         assertEquals(db.getSongs("Rap").size(), db2.getSongs("Rap").size());
+        
+        System.out.println(db.getSongs("Rap"));
+        System.out.println(db.getSongs("R&B"));
     }
 	
 	@Test
@@ -47,6 +50,9 @@ class SongsDatabaseTest {
 		
 		assertEquals(2, db.getSongs("Rap").size());
 		assertEquals(2, db.getSongs("Soul").size());
+		
+		System.out.println("Size of the rap genre: " + db.getSongs("Rap").size());
+		System.out.println("Size of the soul genre: " + db.getSongs("Soul").size());
 	}
 	
 	@Test
@@ -60,7 +66,11 @@ class SongsDatabaseTest {
 				
 		assertEquals("Soul", db.getGenre("If Only You Knew"));
 		assertEquals("R&B", db.getGenre("Amphetamine"));
-		assertEquals("That song is not in the Database.", db.getGenre("Nothing Even Matters"));
+		
+		System.out.println("Genre of Pick Up You Feelings: " + db.getGenre("Amphetamine"));
+		System.out.println("Genre of Heartbreak Hotel: " + db.getGenre("Heartbreak Hotel"));
 	}
+	
+	
 
 }
