@@ -28,6 +28,7 @@ public class SongsDatabase {
 
     /**
      * Return the Set that contains all songs for a genre
+     * 
      * @param genre
      * @return the set of that genre
      */
